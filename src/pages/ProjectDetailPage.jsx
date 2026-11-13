@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { portfolioProjects } from '../data/studioData';
 import {
@@ -34,7 +34,7 @@ export default function ProjectDetailPage() {
   if (!project) {
     return (
       <div className="min-h-screen pt-32 pb-24 text-white flex flex-col items-center justify-center text-center px-4">
-        <h1 className="font-space font-bold text-4xl mb-4">Project Not Found</h1>
+        <h1 className="font-display font-bold text-4xl mb-4">Project Not Found</h1>
         <p className="font-mono text-sm text-[#94A3B8] mb-8">
           The requested portfolio project could not be found in the archive.
         </p>
@@ -84,7 +84,7 @@ export default function ProjectDetailPage() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
-        <div className="mb-8 flex items-center justify-between text-xs font-mono text-[#94A3B8]">
+        <div className="mb-8 flex items-center justify-between text-xs font-ui text-[#94A3B8]">
           <div className="flex items-center gap-2">
             <Link to="/" className="hover:text-[#B69A73] transition-colors">
               HOME
@@ -108,7 +108,7 @@ export default function ProjectDetailPage() {
 
         {/* Project Header */}
         <div className="mb-10">
-          <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-[#B69A73] mb-3 uppercase tracking-widest">
+          <div className="flex flex-wrap items-center gap-3 font-editorial text-xs text-[#B69A73] mb-3 uppercase tracking-widest">
             <span className="font-semibold">{project.category}</span>
             <span className="text-white/30">/</span>
             <span className="text-white/70">{project.subCategory}</span>
@@ -116,11 +116,11 @@ export default function ProjectDetailPage() {
             <span className="text-white/70">{project.year}</span>
           </div>
 
-          <h1 className="font-space font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08] mb-6">
+          <h1 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08] mb-6">
             {project.title}
           </h1>
 
-          <p className="font-mono text-sm sm:text-base text-[#94A3B8] leading-relaxed max-w-3xl">
+          <p className="font-ui text-sm sm:text-base text-[#94A3B8] leading-relaxed max-w-3xl">
             {project.summary}
           </p>
         </div>
@@ -176,7 +176,7 @@ export default function ProjectDetailPage() {
 
           {/* Aspect Ratio Badge */}
           <div className="absolute top-4 right-4 pointer-events-none">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+            <span className="font-editorial text-[10px] uppercase tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
               {project.aspectRatio}
             </span>
           </div>
@@ -187,21 +187,21 @@ export default function ProjectDetailPage() {
         {/* ========================================================= */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
           <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-sm">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#B69A73] mb-3 flex items-center gap-2">
+            <div className="font-editorial text-xs uppercase tracking-widest text-[#B69A73] mb-3 flex items-center gap-2">
               <Layers className="w-4 h-4" />
               <span>The Creative Brief</span>
             </div>
-            <p className="text-sm text-slate-300 leading-relaxed font-sans">
+            <p className="text-sm text-slate-300 leading-relaxed font-ui">
               {project.creativeBrief}
             </p>
           </div>
 
           <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-sm">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#B69A73] mb-3 flex items-center gap-2">
+            <div className="font-editorial text-xs uppercase tracking-widest text-[#B69A73] mb-3 flex items-center gap-2">
               <Camera className="w-4 h-4" />
               <span>Studio Role &amp; Execution</span>
             </div>
-            <p className="text-sm text-slate-300 leading-relaxed font-sans">
+            <p className="text-sm text-slate-300 leading-relaxed font-ui">
               {project.studioRole}
             </p>
           </div>
@@ -212,12 +212,12 @@ export default function ProjectDetailPage() {
         {/* ========================================================= */}
         {project.cameraSpecs && (
           <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/[0.08] mb-14">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#B69A73] mb-6 flex items-center gap-2">
+            <div className="font-editorial text-xs uppercase tracking-widest text-[#B69A73] mb-6 flex items-center gap-2">
               <Film className="w-4 h-4" />
               <span>Production Optics &amp; Camera Specifications</span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 font-editorial text-xs">
               <div>
                 <span className="text-[#94A3B8] block text-[10px] uppercase mb-1">Camera Body</span>
                 <span className="text-white font-medium">{project.cameraSpecs.camera}</span>
@@ -247,7 +247,7 @@ export default function ProjectDetailPage() {
         {/* ========================================================= */}
         {project.gallery && project.gallery.length > 0 && (
           <div className="mb-14">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#B69A73] mb-6 flex items-center gap-2">
+            <div className="font-editorial text-xs uppercase tracking-widest text-[#B69A73] mb-6 flex items-center gap-2">
               <Sparkles className="w-4 h-4" />
               <span>Selected Gallery Frames</span>
             </div>
@@ -275,11 +275,11 @@ export default function ProjectDetailPage() {
         {/* ========================================================= */}
         {project.credits && project.credits.length > 0 && (
           <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/[0.08] mb-14">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#B69A73] mb-5">
+            <div className="font-editorial text-xs uppercase tracking-widest text-[#B69A73] mb-5">
               Project Credits
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 font-editorial text-xs">
               {project.credits.map((c, i) => (
                 <div key={i} className="border-l border-white/10 pl-3">
                   <span className="text-[#94A3B8] block text-[10px] uppercase">{c.role}</span>
@@ -307,10 +307,10 @@ export default function ProjectDetailPage() {
               />
             </div>
             <div className="flex-1 min-w-0">
-              <span className="font-mono text-[10px] text-[#94A3B8] uppercase block">
+              <span className="font-editorial text-[10px] text-[#94A3B8] uppercase block">
                 &larr; Previous Project
               </span>
-              <span className="font-space font-bold text-white group-hover:text-[#B69A73] transition-colors truncate block">
+              <span className="font-display font-bold text-white group-hover:text-[#B69A73] transition-colors truncate block">
                 {prevProject.title}
               </span>
             </div>
@@ -322,10 +322,10 @@ export default function ProjectDetailPage() {
             className="group p-5 rounded-2xl bg-white/[0.02] hover:bg-white/[0.04] border border-white/[0.08] hover:border-[#B69A73]/40 transition-all flex items-center justify-between gap-4 text-right"
           >
             <div className="flex-1 min-w-0">
-              <span className="font-mono text-[10px] text-[#94A3B8] uppercase block">
+              <span className="font-editorial text-[10px] text-[#94A3B8] uppercase block">
                 Next Project &rarr;
               </span>
-              <span className="font-space font-bold text-white group-hover:text-[#B69A73] transition-colors truncate block">
+              <span className="font-display font-bold text-white group-hover:text-[#B69A73] transition-colors truncate block">
                 {nextProject.title}
               </span>
             </div>
@@ -361,4 +361,5 @@ export default function ProjectDetailPage() {
     </div>
   );
 }
+
 

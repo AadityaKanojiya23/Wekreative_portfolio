@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { portfolioProjects } from '../data/studioData';
 import { ArrowUpRight, ArrowLeft, Clock, Film, Camera } from 'lucide-react';
@@ -71,7 +71,7 @@ export default function PortfolioPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Navigation Breadcrumb */}
-        <div className="mb-8 flex items-center gap-2 font-mono text-xs text-[#94A3B8]">
+        <div className="mb-8 flex items-center gap-2 font-ui text-xs text-[#94A3B8]">
           <Link
             to="/"
             className="hover:text-[#B69A73] transition-colors flex items-center gap-1.5 focus-visible:outline-none"
@@ -89,18 +89,18 @@ export default function PortfolioPage() {
         <div className="pb-12 mb-12">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-3xl">
-              <div className="font-mono text-xs uppercase tracking-[0.25em] text-[#B69A73] mb-4 flex items-center gap-2">
+              <div className="font-editorial text-xs uppercase tracking-[0.25em] text-[#B69A73] mb-4 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#B69A73]" />
                 <span>WEKREATIVES / PORTFOLIO</span>
               </div>
 
-              <h1 className="font-space font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08]">
+              <h1 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08]">
                 A Collection of Stories,
                 <br />
                 Frames &amp; Experiences.
               </h1>
 
-              <p className="mt-5 font-mono text-xs sm:text-sm text-[#94A3B8] leading-relaxed max-w-2xl">
+              <p className="mt-5 font-ui text-xs sm:text-sm text-[#94A3B8] leading-relaxed max-w-2xl">
                 Explore our selected work across filmmaking, photography, commercial productions,
                 fashion, campaigns, and creative storytelling.
               </p>
@@ -112,10 +112,10 @@ export default function PortfolioPage() {
                 <Film className="w-5 h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="font-space font-bold text-2xl text-white leading-none">
+                <span className="font-display font-bold text-2xl text-white leading-none">
                   {portfolioProjects.length}
                 </span>
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8] mt-1">
+                <span className="font-editorial text-[10px] uppercase tracking-wider text-[#94A3B8] mt-1">
                   Curated Projects in Archive
                 </span>
               </div>
@@ -142,7 +142,7 @@ export default function PortfolioPage() {
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => handleCategorySelect(cat)}
-                  className={`shrink-0 px-4 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider transition-all duration-200 flex items-center gap-2.5 cursor-pointer focus-visible:outline-none ${
+                  className={`shrink-0 px-4 py-2.5 rounded-xl font-ui text-xs uppercase tracking-wider transition-all duration-200 flex items-center gap-2.5 cursor-pointer focus-visible:outline-none ${
                     isActive
                       ? 'bg-[#B69A73] text-[#111111] font-bold shadow-[0_4px_16px_rgba(182,154,115,0.25)]'
                       : 'bg-white/[0.03] text-[#94A3B8] hover:text-white border border-white/[0.06] hover:border-white/20'
@@ -150,7 +150,7 @@ export default function PortfolioPage() {
                 >
                   <span>{cat}</span>
                   <span
-                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono ${
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-editorial ${
                       isActive ? 'bg-black/25 text-black font-semibold' : 'bg-white/5 text-slate-500'
                     }`}
                   >
@@ -167,7 +167,7 @@ export default function PortfolioPage() {
         {/* ========================================================= */}
         {filteredProjects.length === 0 ? (
           <div className="py-24 text-center border border-dashed border-white/10 rounded-2xl">
-            <p className="font-mono text-sm text-[#94A3B8]">No projects found in this category.</p>
+            <p className="font-ui text-sm text-[#94A3B8]">No projects found in this category.</p>
             <button
               onClick={() => handleCategorySelect('ALL')}
               className="mt-4 px-5 py-2.5 rounded-lg bg-[#B69A73] text-black font-mono text-xs uppercase tracking-wider font-bold"
@@ -199,7 +199,7 @@ export default function PortfolioPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
 
                   {/* Top Tags */}
-                  <div className="absolute top-3 inset-x-3 flex items-center justify-between text-[10px] font-mono tracking-wider uppercase pointer-events-none">
+                  <div className="absolute top-3 inset-x-3 flex items-center justify-between text-[10px] font-editorial tracking-wider uppercase pointer-events-none">
                     <span className="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-white/90 border border-white/10">
                       {project.category}
                     </span>
@@ -227,23 +227,23 @@ export default function PortfolioPage() {
                 {/* Card Information */}
                 <div className="p-6 flex flex-col justify-between flex-1">
                   <div>
-                    <div className="flex items-center justify-between gap-4 font-mono text-[11px] mb-2.5 text-[#94A3B8]">
+                    <div className="flex items-center justify-between gap-4 font-editorial text-[11px] mb-2.5 text-[#94A3B8]">
                       <span className="text-[#B69A73] uppercase tracking-wider font-semibold">
                         {project.subCategory}
                       </span>
                       <span>{project.year}</span>
                     </div>
 
-                    <h2 className="font-space font-bold text-xl sm:text-2xl text-white group-hover:text-[#B69A73] transition-colors leading-tight">
+                    <h2 className="font-display font-bold text-xl sm:text-2xl text-white group-hover:text-[#B69A73] transition-colors leading-tight">
                       {project.title}
                     </h2>
 
-                    <p className="mt-3 text-xs sm:text-sm text-[#94A3B8] line-clamp-2 leading-relaxed">
+                    <p className="mt-3 font-ui text-xs sm:text-sm text-[#94A3B8] line-clamp-2 leading-relaxed">
                       {project.summary}
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between font-mono text-xs">
+                  <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between font-editorial text-xs">
                     <span className="text-white/40 text-[11px]">
                       {project.cameraSpecs?.camera?.split(' ')[0] || 'Studio Capture'}
                     </span>
@@ -279,4 +279,5 @@ export default function PortfolioPage() {
     </div>
   );
 }
+
 

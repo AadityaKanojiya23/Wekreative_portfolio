@@ -73,10 +73,10 @@ const DROPDOWN_STYLES = `
 `;
 
 export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectService }) {
-  const [activeDropdown, setActiveDropdown] = useState(null); // 'work' | 'services' | null
+  const [activeDropdown, setActiveDropdown] = useState(null); // 'work' | null
   const [closingDropdown, setClosingDropdown] = useState(null); // tracks which panel is playing exit anim
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileAccordion, setMobileAccordion] = useState(null); // 'work' | 'services' | null
+  const [mobileAccordion, setMobileAccordion] = useState(null); // 'work' | null
   const [scrolled, setScrolled] = useState(false);
   const closeTimerRef = useRef(null);
 
@@ -115,7 +115,6 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
   };
 
   const workDropdownRef = useRef(null);
-  const servicesDropdownRef = useRef(null);
   const navRef = useRef(null);
 
   // Scroll detection for subtle elevation
@@ -144,9 +143,7 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
     const handleClickOutside = (e) => {
       if (
         workDropdownRef.current &&
-        !workDropdownRef.current.contains(e.target) &&
-        servicesDropdownRef.current &&
-        !servicesDropdownRef.current.contains(e.target)
+        !workDropdownRef.current.contains(e.target)
       ) {
         closeDropdown(activeDropdown);
       }
@@ -179,19 +176,6 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
     { label: 'Content Creation', category: 'Campaigns', hint: 'Multi-Platform' },
     { label: 'Social Media Reels', category: 'Film', hint: 'Vertical Short-Form' },
     { label: 'Portfolio Details', category: 'All', hint: 'Technical Specs' },
-  ];
-
-  // SERVICES Dropdown Items
-  const serviceItems = [
-    { label: 'Professional Videography', service: 'Brand Films & Commercials' },
-    { label: 'Photography', service: 'Product & Lifestyle Photography' },
-    { label: 'Cinematography', service: 'Brand Films & Commercials' },
-    { label: 'Content Creation', service: 'Social-First Video & Short Form' },
-    { label: 'Brand & Commercial Films', service: 'Brand Films & Commercials' },
-    { label: 'Social Media Content', service: 'Social-First Video & Short Form' },
-    { label: 'Event Coverage', service: 'Events & Live Cultural Coverage' },
-    { label: 'Video Editing & Post Production', service: 'Post-Production, Color & Sound' },
-    { label: 'Creative Direction', service: 'Creative Direction & Production' },
   ];
 
   const navigate = useNavigate();
@@ -255,30 +239,22 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
     }
   };
 
-  const handleServiceItemClick = (e, item) => {
+  const handleServiceNavClick = (e) => {
     e.preventDefault();
     closeDropdown();
     setMobileMenuOpen(false);
-
-    if (onSelectService) {
-      onSelectService(item.service);
-    }
 
     if (location.pathname !== '/') {
       navigate('/#services');
       setTimeout(() => {
         const servicesEl = document.getElementById('services');
-        if (servicesEl) {
-          servicesEl.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (servicesEl) servicesEl.scrollIntoView({ behavior: 'smooth' });
       }, 100);
       return;
     }
 
     const servicesEl = document.getElementById('services');
-    if (servicesEl) {
-      servicesEl.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (servicesEl) servicesEl.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleCtaClick = (e) => {
@@ -335,10 +311,10 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
 
               {/* Brand Typography */}
               <div className="flex flex-col text-left">
-                <span className="font-space font-bold text-lg sm:text-xl tracking-[0.22em] text-white uppercase leading-none group-hover:text-[#B69A73] transition-colors">
+                <span className="font-display font-bold text-lg sm:text-xl tracking-[0.22em] text-white uppercase leading-none group-hover:text-[#B69A73] transition-colors">
                   {studioConfig.studioName}
                 </span>
-                <span className="font-mono text-[9px] tracking-[0.28em] text-[#94A3B8] uppercase mt-1 leading-none font-medium">
+                <span className="font-ui text-[9px] tracking-[0.28em] text-[#94A3B8] uppercase mt-1 leading-none font-medium">
                   {studioConfig.studioSubtitle}
                 </span>
               </div>
@@ -356,7 +332,7 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
             <a
               href="#"
               onClick={(e) => handleNavClick(e, 'home')}
-              className="font-space text-xs tracking-[0.16em] uppercase font-semibold text-white hover:text-[#B69A73] transition-colors py-2 focus-visible:outline-none relative group"
+              className="font-ui text-xs tracking-[0.14em] uppercase font-medium text-white hover:text-[#B69A73] transition-colors py-2 focus-visible:outline-none relative group"
             >
               <span>HOME</span>
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#B69A73] transition-all duration-200 group-hover:w-full"></span>
@@ -372,7 +348,7 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
               <button
                 type="button"
                 onClick={() => toggleDropdown('work')}
-                className={`font-space text-xs tracking-[0.16em] uppercase font-semibold flex items-center gap-1.5 py-2 transition-colors focus-visible:outline-none cursor-pointer ${
+                className={`font-ui text-xs tracking-[0.14em] uppercase font-medium flex items-center gap-1.5 py-2 transition-colors focus-visible:outline-none cursor-pointer ${
                   activeDropdown === 'work' ? 'text-[#B69A73]' : 'text-white hover:text-[#B69A73]'
                 }`}
                 aria-expanded={activeDropdown === 'work'}
@@ -398,7 +374,7 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
                   <div className="w-[330px] bg-[#FFFFFF] border border-[#E8E6E0] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.30)] p-4 sm:p-5 text-left">
                     {/* Dropdown Header */}
                     <div className="px-3 pb-3 mb-2 border-b border-[#F0EFEB] flex items-center justify-between">
-                      <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#777777] font-semibold">
+                      <span className="font-editorial text-[10px] tracking-[0.2em] uppercase text-[#777777] font-semibold">
                         Selected Folio
                       </span>
                       <span className="font-mono text-[10px] text-[#B69A73] font-semibold">
@@ -413,7 +389,7 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
                           key={idx}
                           type="button"
                           onClick={(e) => handleWorkItemClick(e, item)}
-                          className="wk-item-enter w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-space font-medium text-[#111111] hover:bg-[#F6F4EF] hover:text-[#B69A73] transition-all duration-200 group/item"
+                          className="wk-item-enter w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-ui font-medium text-[#111111] hover:bg-[#F6F4EF] hover:text-[#B69A73] transition-all duration-200 group/item"
                           style={{
                             animationDelay: closingDropdown === 'work' ? '0ms' : `${60 + idx * 72}ms`,
                           }}
@@ -434,80 +410,21 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
               )}
             </div>
 
-            {/* 3. SERVICES (Dropdown) */}
-            <div
-              ref={servicesDropdownRef}
-              className="relative h-full flex items-center"
-              onMouseEnter={() => openDropdown('services')}
-              onMouseLeave={() => closeDropdown('services')}
+            {/* 3. SERVICES (Plain Link) */}
+            <a
+              href="#services"
+              onClick={handleServiceNavClick}
+              className="font-ui text-xs tracking-[0.14em] uppercase font-medium text-white hover:text-[#B69A73] transition-colors py-2 focus-visible:outline-none relative group"
             >
-              <button
-                type="button"
-                onClick={() => toggleDropdown('services')}
-                className={`font-space text-xs tracking-[0.16em] uppercase font-semibold flex items-center gap-1.5 py-2 transition-colors focus-visible:outline-none cursor-pointer ${
-                  activeDropdown === 'services' ? 'text-[#B69A73]' : 'text-white hover:text-[#B69A73]'
-                }`}
-                aria-expanded={activeDropdown === 'services'}
-                aria-haspopup="true"
-              >
-                <span>SERVICES</span>
-                <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                    activeDropdown === 'services' ? 'rotate-180 text-[#B69A73]' : 'text-[#94A3B8]'
-                  }`}
-                />
-              </button>
-
-              {/* SERVICES — Animated Dropdown Panel */}
-              {(activeDropdown === 'services' || closingDropdown === 'services') && (
-                <div
-                  className={`absolute top-[72px] left-1/2 -translate-x-1/2 pt-2 z-50 ${
-                    closingDropdown === 'services' ? 'wk-panel-exit' : 'wk-panel-enter'
-                  }`}
-                  role="menu"
-                  aria-label="Studio Services"
-                >
-                  <div className="w-[350px] bg-[#FFFFFF] border border-[#E8E6E0] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.30)] p-4 sm:p-5 text-left">
-                    {/* Dropdown Header */}
-                    <div className="px-3 pb-3 mb-2 border-b border-[#F0EFEB] flex items-center justify-between">
-                      <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#777777] font-semibold">
-                        Creative Capabilities
-                      </span>
-                      <span className="font-mono text-[10px] text-[#B69A73] font-semibold">
-                        Full-Spectrum
-                      </span>
-                    </div>
-
-                    {/* Staggered Items */}
-                    <div className="space-y-1">
-                      {serviceItems.map((item, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          onClick={(e) => handleServiceItemClick(e, item)}
-                          className="wk-item-enter w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-space font-medium text-[#111111] hover:bg-[#F6F4EF] hover:text-[#B69A73] transition-all duration-200 group/item"
-                          style={{
-                            animationDelay: closingDropdown === 'services' ? '0ms' : `${60 + idx * 72}ms`,
-                          }}
-                          role="menuitem"
-                        >
-                          <span className="group-hover/item:translate-x-1 transition-transform duration-200">
-                            {item.label}
-                          </span>
-                          <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover/item:opacity-100 text-[#B69A73] transition-all duration-200 group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5" />
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+              <span>SERVICES</span>
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#B69A73] transition-all duration-200 group-hover:w-full"></span>
+            </a>
 
             {/* 4. ABOUT */}
             <a
               href="#about"
               onClick={(e) => handleNavClick(e, 'about')}
-              className="font-space text-xs tracking-[0.16em] uppercase font-semibold text-white hover:text-[#B69A73] transition-colors py-2 focus-visible:outline-none relative group"
+              className="font-ui text-xs tracking-[0.14em] uppercase font-medium text-white hover:text-[#B69A73] transition-colors py-2 focus-visible:outline-none relative group"
             >
               <span>ABOUT</span>
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#B69A73] transition-all duration-200 group-hover:w-full"></span>
@@ -517,7 +434,7 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, 'contact')}
-              className="font-space text-xs tracking-[0.16em] uppercase font-semibold text-white hover:text-[#B69A73] transition-colors py-2 focus-visible:outline-none relative group"
+              className="font-ui text-xs tracking-[0.14em] uppercase font-medium text-white hover:text-[#B69A73] transition-colors py-2 focus-visible:outline-none relative group"
             >
               <span>CONTACT</span>
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#B69A73] transition-all duration-200 group-hover:w-full"></span>
@@ -531,7 +448,7 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
             <button
               type="button"
               onClick={handleCtaClick}
-              className="group hidden sm:inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#B69A73] hover:bg-[#A88B63] text-[#111111] font-space text-xs uppercase tracking-[0.16em] font-bold shadow-sm hover:shadow-[0_8px_20px_rgba(182,154,115,0.25)] transition-all duration-200 active:scale-95 focus-visible:outline-none cursor-pointer"
+              className="group hidden sm:inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#B69A73] hover:bg-[#A88B63] text-[#111111] font-ui text-xs uppercase tracking-[0.14em] font-semibold shadow-sm hover:shadow-[0_8px_20px_rgba(182,154,115,0.25)] transition-all duration-200 active:scale-95 focus-visible:outline-none cursor-pointer"
             >
               <span>CONTACT US</span>
               <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
@@ -565,7 +482,7 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
           <button
             type="button"
             onClick={(e) => handleNavClick(e, 'home')}
-            className="text-left font-space text-xl font-bold uppercase tracking-wider text-white hover:text-[#B69A73] py-2 border-b border-[#1E293B]"
+            className="text-left font-ui text-xl font-semibold uppercase tracking-wider text-white hover:text-[#B69A73] py-2 border-b border-[#1E293B]"
           >
             HOME
           </button>
@@ -575,7 +492,7 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
             <button
               type="button"
               onClick={() => setMobileAccordion(mobileAccordion === 'work' ? null : 'work')}
-              className="w-full flex items-center justify-between text-left font-space text-xl font-bold uppercase tracking-wider text-white hover:text-[#B69A73]"
+              className="w-full flex items-center justify-between text-left font-ui text-xl font-semibold uppercase tracking-wider text-white hover:text-[#B69A73]"
             >
               <span>WORK</span>
               <ChevronDown
@@ -592,7 +509,7 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
                     key={idx}
                     type="button"
                     onClick={(e) => handleWorkItemClick(e, item)}
-                    className="w-full text-left font-space text-sm text-slate-300 hover:text-[#B69A73] py-1.5 flex items-center justify-between"
+                    className="w-full text-left font-ui text-sm text-slate-300 hover:text-[#B69A73] py-1.5 flex items-center justify-between"
                   >
                     <span>{item.label}</span>
                     <span className="font-mono text-[10px] text-slate-500">{item.hint}</span>
@@ -602,42 +519,20 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
             )}
           </div>
 
-          {/* SERVICES Accordion */}
-          <div className="border-b border-[#1E293B] py-2">
-            <button
-              type="button"
-              onClick={() => setMobileAccordion(mobileAccordion === 'services' ? null : 'services')}
-              className="w-full flex items-center justify-between text-left font-space text-xl font-bold uppercase tracking-wider text-white hover:text-[#B69A73]"
-            >
-              <span>SERVICES</span>
-              <ChevronDown
-                className={`w-5 h-5 transition-transform duration-200 ${
-                  mobileAccordion === 'services' ? 'rotate-180 text-[#B69A73]' : 'text-slate-400'
-                }`}
-              />
-            </button>
-
-            {mobileAccordion === 'services' && (
-              <div className="mt-3 pl-3 space-y-2 pb-2">
-                {serviceItems.map((item, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={(e) => handleServiceItemClick(e, item)}
-                    className="w-full text-left font-space text-sm text-slate-300 hover:text-[#B69A73] py-1.5"
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          {/* SERVICES (Plain Link) */}
+          <button
+            type="button"
+            onClick={handleServiceNavClick}
+            className="text-left font-ui text-xl font-semibold uppercase tracking-wider text-white hover:text-[#B69A73] py-2 border-b border-[#1E293B] w-full"
+          >
+            SERVICES
+          </button>
 
           {/* ABOUT */}
           <button
             type="button"
             onClick={(e) => handleNavClick(e, 'about')}
-            className="text-left font-space text-xl font-bold uppercase tracking-wider text-white hover:text-[#B69A73] py-2 border-b border-[#1E293B]"
+            className="text-left font-ui text-xl font-semibold uppercase tracking-wider text-white hover:text-[#B69A73] py-2 border-b border-[#1E293B]"
           >
             ABOUT
           </button>
@@ -646,7 +541,7 @@ export default function Header({ onOpenEnquiry, onSelectWorkCategory, onSelectSe
           <button
             type="button"
             onClick={(e) => handleNavClick(e, 'contact')}
-            className="text-left font-space text-xl font-bold uppercase tracking-wider text-white hover:text-[#B69A73] py-2 border-b border-[#1E293B]"
+            className="text-left font-ui text-xl font-semibold uppercase tracking-wider text-white hover:text-[#B69A73] py-2 border-b border-[#1E293B]"
           >
             CONTACT
           </button>

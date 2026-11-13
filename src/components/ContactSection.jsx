@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { studioConfig } from '../data/studioData';
 import {
   Film,
@@ -27,19 +27,19 @@ const PROJECT_TYPES = [
 
 const TIMELINES = [
   'ASAP',
-  'Within 1–2 Weeks',
+  'Within 1â€“2 Weeks',
   'Within a Month',
-  '1–3 Months',
+  '1â€“3 Months',
   'Flexible',
 ];
 
 const BUDGET_RANGES_INR = [
-  'Under ₹50,000',
-  '₹50,000 – ₹1,50,000',
-  '₹1,50,000 – ₹3,50,000',
-  '₹3,50,000 – ₹7,50,000',
-  '₹7,50,000 – ₹15,00,000',
-  '₹15,00,000+',
+  'Under â‚¹50,000',
+  'â‚¹50,000 â€“ â‚¹1,50,000',
+  'â‚¹1,50,000 â€“ â‚¹3,50,000',
+  'â‚¹3,50,000 â€“ â‚¹7,50,000',
+  'â‚¹7,50,000 â€“ â‚¹15,00,000',
+  'â‚¹15,00,000+',
 ];
 
 const SERVICES_LIST = [
@@ -72,7 +72,7 @@ export default function ContactSection({ preselectedService }) {
     email: '',
     projectType: preselectedService || 'Film Production',
     timeline: 'Within a Month',
-    budget: '₹1,50,000 – ₹3,50,000',
+    budget: 'â‚¹1,50,000 â€“ â‚¹3,50,000',
     message: '',
   });
 
@@ -117,7 +117,7 @@ export default function ContactSection({ preselectedService }) {
       email: '',
       projectType: 'Film Production',
       timeline: 'Within a Month',
-      budget: '₹1,50,000 – ₹3,50,000',
+      budget: 'â‚¹1,50,000 â€“ â‚¹3,50,000',
       message: '',
     });
     setErrors({});
@@ -141,20 +141,20 @@ export default function ContactSection({ preselectedService }) {
           <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
             <div>
               {/* Small Label */}
-              <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[#B69A73] mb-3">
+              <div className="inline-flex items-center gap-2 font-editorial text-xs uppercase tracking-[0.25em] text-[#B69A73] mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B69A73]" />
                 <span>LET&apos;S CREATE TOGETHER</span>
               </div>
 
               {/* Main Heading with Highlighted "Mind?" */}
-              <h2 className="font-space font-bold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08] mb-5">
+              <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08] mb-5">
                 Have a Story
                 <br />
                 in <span className="text-[#B69A73]">Mind?</span>
               </h2>
 
               {/* Supporting Description */}
-              <p className="font-sans text-sm sm:text-base text-slate-300 leading-relaxed max-w-lg">
+              <p className="font-ui text-sm sm:text-base text-slate-300 leading-relaxed max-w-lg">
                 Share your idea with us, and we&apos;ll bring it to life through powerful visuals and
                 storytelling.
               </p>
@@ -194,10 +194,10 @@ export default function ContactSection({ preselectedService }) {
                       </div>
 
                       <div className="flex flex-col">
-                        <span className="font-space font-bold text-sm sm:text-base text-white group-hover:text-[#B69A73] transition-colors leading-snug">
+                        <span className="font-display font-bold text-sm sm:text-base text-white group-hover:text-[#B69A73] transition-colors leading-snug">
                           {srv.title}
                         </span>
-                        <span className="font-mono text-xs text-[#94A3B8] leading-tight mt-0.5">
+                        <span className="font-editorial text-xs text-[#94A3B8] leading-tight mt-0.5">
                           {srv.subtitle}
                         </span>
                       </div>
@@ -216,7 +216,7 @@ export default function ContactSection({ preselectedService }) {
             </div>
 
             {/* Bottom Metadata Badges */}
-            <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center gap-4 font-mono text-xs text-[#94A3B8]">
+            <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center gap-4 font-ui text-xs text-[#94A3B8]">
               <div className="flex items-center gap-2 bg-white/[0.03] border border-white/[0.07] px-3.5 py-2 rounded-xl backdrop-blur-sm">
                 <MapPin className="w-3.5 h-3.5 text-[#B69A73]" />
                 <span>{studioConfig.location}</span>
@@ -224,7 +224,7 @@ export default function ContactSection({ preselectedService }) {
 
               <div className="flex items-center gap-2 bg-white/[0.03] border border-white/[0.07] px-3.5 py-2 rounded-xl backdrop-blur-sm">
                 <Clock className="w-3.5 h-3.5 text-[#B69A73]" />
-                <span>Fast Response · Within 24 Hours</span>
+                <span>Fast Response Â· Within 24 Hours</span>
               </div>
             </div>
           </div>
@@ -249,7 +249,7 @@ export default function ContactSection({ preselectedService }) {
                     <CheckCircle2 className="w-7 h-7" />
                   </div>
 
-                  <h3 className="font-space font-bold text-2xl sm:text-3xl text-white">
+                  <h3 className="font-display font-bold text-2xl sm:text-3xl text-white">
                     Brief Received.
                   </h3>
 
@@ -280,10 +280,10 @@ export default function ContactSection({ preselectedService }) {
                 <form onSubmit={handleSubmit} noValidate className="space-y-6">
                   {/* Form Header */}
                   <div className="border-b border-white/[0.08] pb-4">
-                    <h3 className="font-space font-bold text-2xl sm:text-3xl text-white tracking-tight">
+                    <h3 className="font-display font-bold text-2xl sm:text-3xl text-white tracking-tight">
                       Project Enquiry
                     </h3>
-                    <p className="text-xs sm:text-sm font-sans text-slate-300 mt-1">
+                    <p className="text-xs sm:text-sm font-ui text-slate-300 mt-1">
                       Tell us about your project, and we&apos;ll get back to you soon.
                     </p>
                   </div>
@@ -303,14 +303,14 @@ export default function ContactSection({ preselectedService }) {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Rahul Sharma"
-                        className={`w-full px-4 py-3 rounded-xl bg-white/[0.04] border text-white font-sans text-sm focus:outline-none transition-colors ${
+                        className={`w-full px-4 py-3 rounded-xl bg-white/[0.04] border text-white font-ui text-sm focus:outline-none transition-colors ${
                           errors.name
                             ? 'border-rose-500'
                             : 'border-white/[0.12] focus:border-[#B69A73]'
                         }`}
                       />
                       {errors.name && (
-                        <p className="mt-1 text-xs text-rose-400 font-mono flex items-center gap-1">
+                        <p className="mt-1 text-xs text-rose-400 font-ui flex items-center gap-1">
                           <AlertCircle className="w-3 h-3" />
                           {errors.name}
                         </p>
@@ -330,14 +330,14 @@ export default function ContactSection({ preselectedService }) {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="e.g. rahul@brand.in"
-                        className={`w-full px-4 py-3 rounded-xl bg-white/[0.04] border text-white font-sans text-sm focus:outline-none transition-colors ${
+                        className={`w-full px-4 py-3 rounded-xl bg-white/[0.04] border text-white font-ui text-sm focus:outline-none transition-colors ${
                           errors.email
                             ? 'border-rose-500'
                             : 'border-white/[0.12] focus:border-[#B69A73]'
                         }`}
                       />
                       {errors.email && (
-                        <p className="mt-1 text-xs text-rose-400 font-mono flex items-center gap-1">
+                        <p className="mt-1 text-xs text-rose-400 font-ui flex items-center gap-1">
                           <AlertCircle className="w-3 h-3" />
                           {errors.email}
                         </p>
@@ -426,14 +426,14 @@ export default function ContactSection({ preselectedService }) {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Describe your idea, objectives, or any specific requirements..."
-                      className={`w-full px-4 py-3 rounded-xl bg-white/[0.04] border text-white font-sans text-sm focus:outline-none transition-colors ${
+                      className={`w-full px-4 py-3 rounded-xl bg-white/[0.04] border text-white font-ui text-sm focus:outline-none transition-colors ${
                         errors.message
                           ? 'border-rose-500'
                           : 'border-white/[0.12] focus:border-[#B69A73]'
                       }`}
                     />
                     {errors.message && (
-                      <p className="mt-1 text-xs text-rose-400 font-mono flex items-center gap-1">
+                      <p className="mt-1 text-xs text-rose-400 font-ui flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         {errors.message}
                       </p>
@@ -444,7 +444,7 @@ export default function ContactSection({ preselectedService }) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 px-6 rounded-xl bg-[#B69A73] hover:bg-[#A88B63] text-[#111111] font-space text-xs sm:text-sm uppercase tracking-[0.16em] font-bold transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg hover:shadow-[0_10px_30px_rgba(182,154,115,0.35)] cursor-pointer active:scale-98"
+                    className="w-full py-4 px-6 rounded-xl bg-[#B69A73] hover:bg-[#A88B63] text-[#111111] font-ui text-xs sm:text-sm uppercase tracking-[0.16em] font-bold transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg hover:shadow-[0_10px_30px_rgba(182,154,115,0.35)] cursor-pointer active:scale-98"
                   >
                     {isSubmitting ? (
                       <span>TRANSMITTING BRIEF...</span>
@@ -464,3 +464,4 @@ export default function ContactSection({ preselectedService }) {
     </section>
   );
 }
+

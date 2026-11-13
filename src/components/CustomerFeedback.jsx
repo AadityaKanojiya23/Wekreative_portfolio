@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { Star, Quote, CheckCircle2 } from 'lucide-react';
 
 const testimonialsData = [
@@ -83,10 +83,6 @@ const FEEDBACK_CSS = `
     will-change: transform;
   }
 
-  .wk-feedback-wrap:hover .wk-feedback-track {
-    animation-play-state: paused;
-  }
-
   .wk-feedback-card {
     transition: transform 300ms cubic-bezier(0.25, 1, 0.5, 1),
                 border-color 300ms ease,
@@ -133,16 +129,16 @@ function FeedbackCard({ item }) {
         <div className="flex items-start justify-between gap-4 mb-5">
           <div className="flex items-center gap-3.5">
             {/* Monogram Initials Badge */}
-            <div className="w-11 h-11 rounded-full bg-white/[0.04] border border-[#B69A73]/30 flex items-center justify-center font-space font-bold text-xs text-[#B69A73] shrink-0 shadow-inner">
+            <div className="w-11 h-11 rounded-full bg-white/[0.04] border border-[#B69A73]/30 flex items-center justify-center font-editorial font-bold text-xs text-[#B69A73] shrink-0 shadow-inner">
               {item.initials}
             </div>
 
             <div className="flex flex-col text-left">
-              <span className="font-space font-bold text-sm sm:text-base text-white leading-tight">
+              <span className="font-editorial font-bold text-sm sm:text-base text-white leading-tight">
                 {item.name}
               </span>
-              <span className="font-mono text-[11px] text-[#94A3B8] leading-snug mt-0.5">
-                {item.role} · <strong className="text-white/80 font-normal">{item.company}</strong>
+              <span className="font-editorial text-[11px] text-[#94A3B8] leading-snug mt-0.5">
+                {item.role} Â· <strong className="text-white/80 font-normal">{item.company}</strong>
               </span>
             </div>
           </div>
@@ -172,7 +168,7 @@ function FeedbackCard({ item }) {
         </div>
 
         {/* Feedback Body Quote */}
-        <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed text-left font-normal">
+        <p className="font-ui text-xs sm:text-sm text-slate-300 leading-relaxed text-left font-normal">
           &ldquo;{item.quote}&rdquo;
         </p>
       </div>
@@ -209,16 +205,16 @@ export default function CustomerFeedback() {
 
       {/* Section Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
-        <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[#B69A73] mb-3">
+        <div className="inline-flex items-center gap-2 font-editorial text-xs uppercase tracking-[0.25em] text-[#B69A73] mb-3">
           <span className="w-1.5 h-1.5 rounded-full bg-[#B69A73]" />
           <span>WHAT CLIENTS SAY</span>
         </div>
 
-        <h2 className="font-space font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1] mb-4">
+        <h2 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1] mb-4">
           Stories Behind The Success.
         </h2>
 
-        <p className="font-mono text-xs sm:text-sm text-[#94A3B8] max-w-xl mx-auto leading-relaxed">
+        <p className="font-ui text-xs sm:text-sm text-[#94A3B8] max-w-xl mx-auto leading-relaxed">
           Real experiences from the people and brands we&apos;ve had the pleasure of working with.
         </p>
       </div>
@@ -255,4 +251,6 @@ export default function CustomerFeedback() {
     </section>
   );
 }
+
+
 

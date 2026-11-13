@@ -1,11 +1,11 @@
-/**
- * SelectedWork.jsx — Premium Dual-Row Infinite Marquee Portfolio
- * WEKREATIVES · Two independent, continuously scrolling horizontal rows.
+﻿/**
+ * SelectedWork.jsx â€” Premium Dual-Row Infinite Marquee Portfolio
+ * WEKREATIVES Â· Two independent, continuously scrolling horizontal rows.
  *
- * Row 1: right → left  (~50s loop)
- * Row 2: left → right  (~58s loop)
+ * Row 1: right â†’ left  (~50s loop)
+ * Row 2: left â†’ right  (~58s loop)
  *
- * Pure CSS keyframes — zero extra dependencies.
+ * Pure CSS keyframes â€” zero extra dependencies.
  * Hover pauses the row being hovered. Clicking opens the case-study modal.
  */
 
@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { portfolioProjects } from '../data/studioData';
 import { ArrowUpRight } from 'lucide-react';
 
-/* ─── inject marquee keyframes once ─────────────────── */
+/* â”€â”€â”€ inject marquee keyframes once â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const MARQUEE_CSS = `
   @keyframes wk-marquee-ltr {
     0%   { transform: translateX(-50%); }
@@ -36,12 +36,6 @@ const MARQUEE_CSS = `
     width: max-content;
     animation: wk-marquee-ltr 38s linear infinite;
     will-change: transform;
-  }
-
-  /* pause on row hover */
-  .wk-row-wrap:hover .wk-track-rtl,
-  .wk-row-wrap:hover .wk-track-ltr {
-    animation-play-state: paused;
   }
 
   /* card */
@@ -100,7 +94,7 @@ function useInjectStyles(css, id) {
   }, []);
 }
 
-/* ─── single portfolio card (presentation only) ─── */
+/* â”€â”€â”€ single portfolio card (presentation only) â”€â”€â”€ */
 function PortfolioCard({ project }) {
   return (
     <div
@@ -111,7 +105,7 @@ function PortfolioCard({ project }) {
         margin: '0 10px',
       }}
     >
-      {/* ── image ── */}
+      {/* â”€â”€ image â”€â”€ */}
       <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
         <img
           src={project.coverImage}
@@ -130,7 +124,7 @@ function PortfolioCard({ project }) {
         }}
       />
 
-      {/* hover overlay — deeper tint */}
+      {/* hover overlay â€” deeper tint */}
       <div
         className="wk-card-hover-overlay absolute inset-0 pointer-events-none rounded-2xl"
         style={{
@@ -139,21 +133,21 @@ function PortfolioCard({ project }) {
         }}
       />
 
-      {/* ── category badge ── */}
+      {/* â”€â”€ category badge â”€â”€ */}
       <div className="absolute top-3 left-3 pointer-events-none">
-        <span className="font-mono text-[9px] uppercase tracking-widest text-white/75 bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded-full border border-white/10">
+        <span className="font-editorial text-[9px] uppercase tracking-widest text-white/75 bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded-full border border-white/10">
           {project.category}
         </span>
       </div>
 
-      {/* ── year ── */}
+      {/* â”€â”€ year â”€â”€ */}
       <div className="absolute top-3 right-3 pointer-events-none">
         <span className="font-mono text-[9px] text-white/40">{project.year}</span>
       </div>
 
-      {/* ── bottom text ── */}
+      {/* â”€â”€ bottom text â”€â”€ */}
       <div className="absolute bottom-0 left-0 right-0 p-4 pointer-events-none">
-        <h3 className="font-space font-bold text-white text-sm sm:text-base leading-tight mb-1">
+        <h3 className="font-display font-bold text-white text-sm sm:text-base leading-tight mb-1">
           {project.title}
         </h3>
         <div className="wk-card-meta">
@@ -169,7 +163,7 @@ function PortfolioCard({ project }) {
   );
 }
 
-/* ─── marquee row ────────────────────────────────────── */
+/* â”€â”€â”€ marquee row â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function MarqueeRow({ projects, direction }) {
   // duplicate items for seamless infinite loop
   const doubled = [...projects, ...projects];
@@ -189,7 +183,7 @@ function MarqueeRow({ projects, direction }) {
   );
 }
 
-/* ─── main exported section ──────────────────────────── */
+/* â”€â”€â”€ main exported section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const CATEGORIES = ['All', 'Film', 'Photography', 'Campaigns', 'Events', 'Fashion', 'Portraits'];
 
 export default function SelectedWork({
@@ -223,7 +217,7 @@ export default function SelectedWork({
   const finalRow1 = row1.length ? row1 : padded;
   const finalRow2 = row2.length ? row2 : [...padded].reverse();
 
-  /* ── background color to sync edge fades ── */
+  /* â”€â”€ background color to sync edge fades â”€â”€ */
   // We read the CSS variable if set; otherwise fall back to pure black.
   const edgeBg = 'var(--bg-primary, #07090f)';
 
@@ -233,26 +227,23 @@ export default function SelectedWork({
       className="py-20 sm:py-28 relative scroll-mt-20 overflow-hidden"
       aria-label="Selected Works"
     >
-      {/* ── section header ── */}
+      {/* â”€â”€ section header â”€â”€ */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-14">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
-            <div className="font-mono text-xs uppercase tracking-widest text-[#B69A73] mb-3 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B69A73]" aria-hidden="true" />
-              Portfolio Index
+            <div className="font-editorial text-xs uppercase tracking-widest text-[#B69A73] mb-3 flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#B69A73]" aria-hidden="true" />              Portfolio Index
             </div>
-            <h2 className="font-space font-bold text-3xl sm:text-5xl text-white tracking-tight">
-              Selected Work
+            <h2 className="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight">              Selected Work
             </h2>
           </div>
 
-          <p className="text-slate-400 font-mono text-xs sm:text-sm max-w-md leading-relaxed">
+          <p className="text-slate-400 font-ui text-xs sm:text-sm max-w-md leading-relaxed">
             Films and photography produced across fashion, culture, automotive, and architecture.
             Every project is calibrated for cinema screens and editorial print.
           </p>
         </div>
 
-        {/* ── category filter ── */}
+        {/* â”€â”€ category filter â”€â”€ */}
         <div
           className="flex items-center gap-2 overflow-x-auto pb-4 scrollbar-none"
           role="tablist"
@@ -290,7 +281,7 @@ export default function SelectedWork({
         </div>
       </div>
 
-      {/* ── dual marquee rows with edge fades ── */}
+      {/* â”€â”€ dual marquee rows with edge fades â”€â”€ */}
       <div className="relative">
         {/* left fade */}
         <div
@@ -305,13 +296,13 @@ export default function SelectedWork({
           style={{ background: `linear-gradient(to left, ${edgeBg} 0%, transparent 100%)` }}
         />
 
-        {/* ROW 1 — right to left */}
+        {/* ROW 1 â€” right to left */}
         <MarqueeRow
           projects={finalRow1}
           direction="rtl"
         />
 
-        {/* ROW 2 — left to right */}
+        {/* ROW 2 â€” left to right */}
         <div className="mt-3">
           <MarqueeRow
             projects={finalRow2}
@@ -320,14 +311,14 @@ export default function SelectedWork({
         </div>
       </div>
 
-      {/* ── View Full Portfolio CTA ── */}
+      {/* â”€â”€ View Full Portfolio CTA â”€â”€ */}
       <div className="mt-14 flex justify-center">
         <button
           onClick={() => {
             navigate('/portfolio');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl border border-white/10 bg-white/[0.03] text-white font-space text-xs uppercase tracking-[0.14em] font-semibold hover:bg-[#B69A73] hover:text-[#111111] hover:border-[#B69A73] transition-all duration-200 focus-visible:outline-none cursor-pointer"
+          className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl border border-white/10 bg-white/[0.03] text-white font-ui text-xs uppercase tracking-[0.14em] font-semibold hover:bg-[#B69A73] hover:text-[#111111] hover:border-[#B69A73] transition-all duration-200 focus-visible:outline-none cursor-pointer"
         >
           <span>View Full Portfolio</span>
           <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
@@ -336,3 +327,5 @@ export default function SelectedWork({
     </section>
   );
 }
+
+

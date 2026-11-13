@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { studioConfig } from '../data/studioData';
 import {
@@ -11,7 +11,7 @@ import {
   Video,
 } from 'lucide-react';
 
-/* ─── Social Media Icons (Circular Gold-Outlined) ─── */
+/* â”€â”€â”€ Social Media Icons (Circular Gold-Outlined) â”€â”€â”€ */
 function YouTubeIcon({ className = "w-4 h-4" }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -46,7 +46,7 @@ function LinkedInIcon({ className = "w-4 h-4" }) {
   );
 }
 
-/* ─── Cinematic Background Vector Motifs ─── */
+/* â”€â”€â”€ Cinematic Background Vector Motifs â”€â”€â”€ */
 function FilmReelArt({ className = "" }) {
   return (
     <svg
@@ -143,14 +143,14 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative w-full overflow-hidden text-slate-300 font-sans text-xs"
+      className="relative w-full overflow-hidden text-slate-300 font-ui text-xs"
       style={{
         background:
           'linear-gradient(180deg, #05080f 0%, #070c18 45%, #05080e 100%)',
       }}
       aria-label="Studio Footer"
     >
-      {/* ── Background Vignette & Ambient Radial Lighting ── */}
+      {/* â”€â”€ Background Vignette & Ambient Radial Lighting â”€â”€ */}
       <div
         className="absolute inset-0 pointer-events-none -z-10"
         style={{
@@ -159,12 +159,12 @@ export default function Footer() {
         }}
       />
 
-      {/* ── Bottom-Left Film Reel Cinematic Motif ── */}
+      {/* â”€â”€ Bottom-Left Film Reel Cinematic Motif â”€â”€ */}
       <div className="absolute -bottom-16 -left-16 w-80 h-80 pointer-events-none -z-10 opacity-30 select-none">
         <FilmReelArt className="w-full h-full" />
       </div>
 
-      {/* ── Bottom-Right Cinema Camera Equipment Motif ── */}
+      {/* â”€â”€ Bottom-Right Cinema Camera Equipment Motif â”€â”€ */}
       <div className="absolute -bottom-10 -right-12 w-96 h-72 pointer-events-none -z-10 opacity-25 select-none">
         <CinemaCameraArt className="w-full h-full" />
       </div>
@@ -174,7 +174,7 @@ export default function Footer() {
         {/* FIVE-COLUMN MAIN FOOTER LAYOUT                            */}
         {/* ========================================================= */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-16 border-b border-white/[0.08]">
-          {/* ── COLUMN 1: Brand Identity ── */}
+          {/* â”€â”€ COLUMN 1: Brand Identity â”€â”€ */}
           <div className="space-y-5 lg:pr-4">
             <Link
               to="/"
@@ -191,13 +191,13 @@ export default function Footer() {
                 <span className="font-space font-bold text-base tracking-[0.2em] text-white uppercase leading-none group-hover:text-[#B69A73] transition-colors">
                   {studioConfig.studioName}
                 </span>
-                <span className="font-mono text-[9px] tracking-[0.26em] text-[#94A3B8] uppercase mt-1 leading-none font-medium">
+                <span className="font-editorial text-[9px] tracking-[0.26em] text-[#94A3B8] uppercase mt-1 leading-none font-medium">
                   {studioConfig.studioSubtitle}
                 </span>
               </div>
             </Link>
 
-            <p className="font-sans text-xs text-slate-300 leading-relaxed max-w-sm">
+            <p className="font-ui text-xs text-slate-300 leading-relaxed max-w-sm">
               A full-spectrum film production and editorial photography studio, crafting visual
               stories for brands, agencies, and creators worldwide.
             </p>
@@ -254,12 +254,12 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* ── COLUMN 2: Explore ── */}
+          {/* â”€â”€ COLUMN 2: Explore â”€â”€ */}
           <div className="space-y-4">
-            <h3 className="font-space font-bold uppercase text-xs tracking-[0.2em] text-white">
+            <h3 className="font-editorial font-bold uppercase text-xs tracking-[0.2em] text-white">
               EXPLORE
             </h3>
-            <ul className="space-y-2.5 font-mono text-xs">
+            <ul className="space-y-2.5 font-ui text-xs">
               <li>
                 <Link
                   to="/"
@@ -303,12 +303,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ── COLUMN 3: Services ── */}
+          {/* â”€â”€ COLUMN 3: Services â”€â”€ */}
           <div className="space-y-4">
-            <h3 className="font-space font-bold uppercase text-xs tracking-[0.2em] text-white">
+            <h3 className="font-editorial font-bold uppercase text-xs tracking-[0.2em] text-white">
               SERVICES
             </h3>
-            <ul className="space-y-2.5 font-mono text-xs">
+            <ul className="space-y-2.5 font-ui text-xs">
               <li>
                 <a
                   href="#services"
@@ -372,12 +372,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ── COLUMN 4: Resources ── */}
+          {/* â”€â”€ COLUMN 4: Resources â”€â”€ */}
           <div className="space-y-4">
-            <h3 className="font-space font-bold uppercase text-xs tracking-[0.2em] text-white">
+            <h3 className="font-editorial font-bold uppercase text-xs tracking-[0.2em] text-white">
               RESOURCES
             </h3>
-            <ul className="space-y-2.5 font-mono text-xs">
+            <ul className="space-y-2.5 font-ui text-xs">
               <li>
                 <a
                   href="#contact"
@@ -415,9 +415,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ── COLUMN 5: Get in Touch (Glass Contact Cards) ── */}
+          {/* â”€â”€ COLUMN 5: Get in Touch (Glass Contact Cards) â”€â”€ */}
           <div className="space-y-4">
-            <h3 className="font-space font-bold uppercase text-xs tracking-[0.2em] text-white">
+            <h3 className="font-editorial font-bold uppercase text-xs tracking-[0.2em] text-white">
               GET IN TOUCH
             </h3>
 
@@ -436,10 +436,10 @@ export default function Footer() {
                     <Mail className="w-3.5 h-3.5" />
                   </div>
                   <div className="truncate">
-                    <span className="font-mono text-[9px] text-[#94A3B8] uppercase block">
+                    <span className="font-editorial text-[9px] text-[#94A3B8] uppercase block">
                       Direct Email
                     </span>
-                    <span className="font-mono text-[11px] text-white group-hover:text-[#B69A73] transition-colors truncate block">
+                    <span className="font-ui text-[11px] text-white group-hover:text-[#B69A73] transition-colors truncate block">
                       {studioConfig.contactEmail}
                     </span>
                   </div>
@@ -463,10 +463,10 @@ export default function Footer() {
                     <InstagramIcon className="w-3.5 h-3.5" />
                   </div>
                   <div className="truncate">
-                    <span className="font-mono text-[9px] text-[#94A3B8] uppercase block">
+                    <span className="font-editorial text-[9px] text-[#94A3B8] uppercase block">
                       Instagram
                     </span>
-                    <span className="font-mono text-[11px] text-white group-hover:text-[#B69A73] transition-colors truncate block">
+                    <span className="font-ui text-[11px] text-white group-hover:text-[#B69A73] transition-colors truncate block">
                       {studioConfig.instagramHandle}
                     </span>
                   </div>
@@ -490,10 +490,10 @@ export default function Footer() {
                     <Video className="w-3.5 h-3.5" />
                   </div>
                   <div className="truncate">
-                    <span className="font-mono text-[9px] text-[#94A3B8] uppercase block">
+                    <span className="font-editorial text-[9px] text-[#94A3B8] uppercase block">
                       Vimeo Channel
                     </span>
-                    <span className="font-mono text-[11px] text-white group-hover:text-[#B69A73] transition-colors truncate block">
+                    <span className="font-ui text-[11px] text-white group-hover:text-[#B69A73] transition-colors truncate block">
                       nocturnestudio
                     </span>
                   </div>
@@ -517,7 +517,7 @@ export default function Footer() {
               <span className="font-space font-bold text-sm sm:text-base text-white tracking-wide">
                 Mumbai, Maharashtra, India
               </span>
-              <span className="font-mono text-xs text-[#94A3B8] mt-0.5">
+              <span className="font-editorial text-xs text-[#94A3B8] mt-0.5">
                 Our Studio Location
               </span>
             </div>
@@ -532,7 +532,7 @@ export default function Footer() {
               <span className="font-space font-bold text-sm sm:text-base text-white tracking-wide">
                 Within 24 Business Hours
               </span>
-              <span className="font-mono text-xs text-[#94A3B8] mt-0.5">
+              <span className="font-editorial text-xs text-[#94A3B8] mt-0.5">
                 Typical Response Time
               </span>
             </div>
@@ -547,7 +547,7 @@ export default function Footer() {
               <span className="font-space font-bold text-sm sm:text-base text-white tracking-wide">
                 Worldwide Collaborations
               </span>
-              <span className="font-mono text-xs text-[#94A3B8] mt-0.5">
+              <span className="font-editorial text-xs text-[#94A3B8] mt-0.5">
                 Open to Projects Worldwide
               </span>
             </div>
@@ -557,7 +557,7 @@ export default function Footer() {
         {/* ========================================================= */}
         {/* BOTTOM FOOTER BAR                                         */}
         {/* ========================================================= */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-5 font-mono text-xs text-[#94A3B8]">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-5 font-ui text-xs text-[#94A3B8]">
           {/* Left Side: Copyright */}
           <div>
             &copy; 2026 WeKreatives Creative Studio. All rights reserved.
@@ -592,3 +592,4 @@ export default function Footer() {
     </footer>
   );
 }
+
