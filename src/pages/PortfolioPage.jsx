@@ -86,7 +86,7 @@ export default function PortfolioPage() {
         {/* ========================================================= */}
         {/* PORTFOLIO HERO                                            */}
         {/* ========================================================= */}
-        <div className="border-b border-white/[0.08] pb-12 mb-12">
+        <div className="pb-12 mb-12">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-3xl">
               <div className="font-mono text-xs uppercase tracking-[0.25em] text-[#B69A73] mb-4 flex items-center gap-2">
@@ -258,7 +258,7 @@ export default function PortfolioPage() {
         )}
 
         {/* Back to Home CTA */}
-        <div className="mt-20 pt-10 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-20 pt-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <Link
             to="/"
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#94A3B8] hover:text-[#B69A73] transition-colors"

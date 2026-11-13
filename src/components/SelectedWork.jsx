@@ -254,7 +254,7 @@ export default function SelectedWork({
 
         {/* ── category filter ── */}
         <div
-          className="flex items-center gap-2 overflow-x-auto pb-4 scrollbar-none border-b border-white/[0.06]"
+          className="flex items-center gap-2 overflow-x-auto pb-4 scrollbar-none"
           role="tablist"
           aria-label="Filter portfolio projects"
         >

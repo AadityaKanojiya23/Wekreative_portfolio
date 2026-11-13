@@ -6,7 +6,7 @@ export default function CreativeProcess() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section id="process" className="py-20 sm:py-28 relative scroll-mt-20 border-t border-[#1e2029] dark:border-[#1e2029] light:border-[#e5e5e8]" aria-label="Creative Process">
+    <section id="process" className="py-20 sm:py-28 relative scroll-mt-20" aria-label="Creative Process">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">

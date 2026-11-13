@@ -195,7 +195,7 @@ export default function CustomerFeedback() {
   return (
     <section
       id="feedback"
-      className="py-24 sm:py-32 relative overflow-hidden border-t border-white/[0.08]"
+      className="py-24 sm:py-32 relative overflow-hidden"
       aria-label="Client Testimonials and Feedback"
     >
       {/* Background Subtle Gradient Accents */}

@@ -12,7 +12,7 @@ export default function Hero() {
       aria-label="Studio Introduction and Showreel"
     >
       {/* ── Sticky Full-Screen Viewport Container: Pinned while user scrolls through the 300vh track ── */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden border-b border-white/[0.08]">
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
         {/* ── Scroll-Controlled Cinematic Image Sequence Background (246 frames) ── */}
         <CinematicHeroBackground containerRef={containerRef} />
 

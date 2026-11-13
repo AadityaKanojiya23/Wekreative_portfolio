@@ -218,7 +218,7 @@ export default function AboutStudio() {
     <section
       id="about"
       ref={containerRef}
-      className="relative scroll-mt-20 border-t border-[#1e2230]"
+      className="relative scroll-mt-20"
       aria-label="About the Studio"
       style={{
         height: '340vh',

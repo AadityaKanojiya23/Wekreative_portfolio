@@ -130,7 +130,7 @@ export default function ContactSection({ preselectedService }) {
   return (
     <section
       id="contact"
-      className="py-24 sm:py-32 relative scroll-mt-20 border-t border-white/[0.08]"
+      className="py-24 sm:py-32 relative scroll-mt-20"
       aria-label="Contact and Project Brief"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

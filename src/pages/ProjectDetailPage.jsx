@@ -293,7 +293,7 @@ export default function ProjectDetailPage() {
         {/* ========================================================= */}
         {/* PREVIOUS / NEXT PROJECT NAVIGATION                        */}
         {/* ========================================================= */}
-        <div className="pt-10 border-t border-white/[0.08] grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+        <div className="pt-10 grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
           {/* Previous Project */}
           <Link
             to={`/portfolio/${prevProject.id}`}

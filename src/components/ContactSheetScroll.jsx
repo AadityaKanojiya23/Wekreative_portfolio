@@ -4,7 +4,7 @@ import { Film } from 'lucide-react';
 
 export default function ContactSheetScroll() {
   return (
-    <section className="py-14 overflow-hidden border-t border-b border-[#1e2029] dark:border-[#1e2029] light:border-[#e5e5e8] bg-[var(--bg-primary)] dark:bg-[var(--bg-primary)] light:bg-[#f5f5f4]" aria-label="35mm Film Dailies">
+    <section className="py-14 overflow-hidden bg-[var(--bg-primary)] dark:bg-[var(--bg-primary)] light:bg-[#f5f5f4]" aria-label="35mm Film Dailies">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 flex items-center justify-between">
         <div className="flex items-center gap-3 font-mono text-xs text-slate-400">
           <Film className="w-4 h-4 text-[#c0a47d]" />

@@ -4,7 +4,7 @@ import { ArrowUpRight, Check, Sliders } from 'lucide-react';
 
 export default function ServicesSection({ onOpenEnquiryWithService }) {
   return (
-    <section id="services" className="py-20 sm:py-28 relative scroll-mt-20 border-t border-[#1e2029] dark:border-[#1e2029] light:border-[#e5e5e8]" aria-label="Studio Services">
+    <section id="services" className="py-20 sm:py-28 relative scroll-mt-20" aria-label="Studio Services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
