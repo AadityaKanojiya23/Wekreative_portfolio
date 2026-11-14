@@ -1,14 +1,176 @@
 import React, { useState } from 'react';
-import { studioServices } from '../data/studioData';
-import { ArrowUpRight, Check } from 'lucide-react';
+import {
+  Clapperboard,
+  Camera,
+  Music,
+  Briefcase,
+  Palette,
+  SlidersHorizontal,
+  ArrowRight,
+} from 'lucide-react';
 
-const EASING = 'cubic-bezier(0.22, 1, 0.36, 1)';
+/* ─── 8 Services Data (4 columns x 2 rows on desktop) ─── */
+const SERVICES_DATA = [
+  {
+    id: '01',
+    number: '01',
+    title: 'Brand Films & Commercials',
+    description: 'High-impact visual stories that build brand value.',
+    image: 'https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&w=800&q=85',
+    imageAlt: 'Cinema camera on set with anamorphic lens and studio lighting',
+    iconType: 'clapper',
+  },
+  {
+    id: '02',
+    number: '02',
+    title: 'Product & Lifestyle Photography',
+    description: 'Clean, compelling visuals that sell and connect.',
+    image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=85',
+    imageAlt: 'Luxury product tabletop photography with warm rim lighting',
+    iconType: 'camera',
+  },
+  {
+    id: '03',
+    number: '03',
+    title: 'Fashion & Editorial Shoots',
+    description: 'Styled, expressive shoots with a distinct visual identity.',
+    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=85',
+    imageAlt: 'Tailored fashion suit jacket on hanger with studio photography softbox lighting',
+    iconType: 'hanger',
+  },
+  {
+    id: '04',
+    number: '04',
+    title: 'Events & Live Cultural Coverage',
+    description: 'Dynamic, real-time storytelling for events, shows, and culture.',
+    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=85',
+    imageAlt: 'Live concert stage spotlights and audience silhouettes',
+    iconType: 'event',
+  },
+  {
+    id: '05',
+    number: '05',
+    title: 'Music Videos & Artist Films',
+    description: 'Visual translation of sonic emotion with bold art direction.',
+    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=85',
+    imageAlt: 'Atmospheric neon music performance and artist lighting',
+    iconType: 'music',
+  },
+  {
+    id: '06',
+    number: '06',
+    title: 'Corporate & Brand Photography',
+    description: 'Authentic executive portraits and narrative workplace imagery.',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=85',
+    imageAlt: 'Modern corporate architecture and executive workspace',
+    iconType: 'corporate',
+  },
+  {
+    id: '07',
+    number: '07',
+    title: 'Creative Direction & Art Production',
+    description: 'End-to-end creative stewardship from pitch to final delivery.',
+    image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=85',
+    imageAlt: 'Creative direction moodboards, palette, and art production treatments',
+    iconType: 'creative',
+  },
+  {
+    id: '08',
+    number: '08',
+    title: 'Post Production & Color Grading',
+    description: 'Precision DaVinci Resolve color grading, edit, and sound design.',
+    image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=85',
+    imageAlt: 'Color grading suite with reference displays and video timeline',
+    iconType: 'post',
+  },
+];
+
+/* ─── Elegant Golden Outline Icons matching Reference Design ─── */
+function ServiceIcon({ type }) {
+  const iconClass = 'w-5 h-5 text-[#D9AC72]';
+
+  switch (type) {
+    case 'clapper':
+      return <Clapperboard className={iconClass} strokeWidth={1.5} />;
+    case 'camera':
+      return <Camera className={iconClass} strokeWidth={1.5} />;
+    case 'hanger':
+      return (
+        <svg
+          className={iconClass}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 3a2.5 2.5 0 0 1 2.5 2.5c0 1.05-.65 1.95-1.5 2.33V9l8.2 5.5a1.5 1.5 0 0 1-.8 2.7H4.1a1.5 1.5 0 0 1-.8-2.7L11.5 9V7.83A2.5 2.5 0 0 1 12 3z" />
+        </svg>
+      );
+    case 'event':
+      return (
+        <svg
+          className={iconClass}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+          <polygon points="12 12.2 13.1 14.5 15.6 14.8 13.8 16.5 14.2 19 12 17.8 9.8 19 10.2 16.5 8.4 14.8 10.9 14.5 12 12.2" />
+        </svg>
+      );
+    case 'music':
+      return <Music className={iconClass} strokeWidth={1.5} />;
+    case 'corporate':
+      return <Briefcase className={iconClass} strokeWidth={1.5} />;
+    case 'creative':
+      return <Palette className={iconClass} strokeWidth={1.5} />;
+    case 'post':
+      return <SlidersHorizontal className={iconClass} strokeWidth={1.5} />;
+    default:
+      return <Camera className={iconClass} strokeWidth={1.5} />;
+  }
+}
 
 export default function ServicesSection({ onOpenEnquiryWithService }) {
-  const [activeId, setActiveId] = useState(null);
+  // Persistent Set of revealed card IDs — cards stay revealed cumulatively once hovered
+  const [revealedCards, setRevealedCards] = useState(() => new Set());
+  // Tracks active hovered card for subtle focus styling without resetting revealed state
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  // Progressive reveal: adds card to set permanently
+  const revealCard = (id) => {
+    setHoveredCard(id);
+    setRevealedCards((prev) => {
+      if (prev.has(id)) return prev;
+      const next = new Set(prev);
+      next.add(id);
+      return next;
+    });
+  };
+
+  const handleCardClick = (service) => {
+    revealCard(service.id);
+    if (revealedCards.has(service.id)) {
+      if (onOpenEnquiryWithService) {
+        onOpenEnquiryWithService(service.title);
+      }
+    }
+  };
 
   return (
-    <section id="services" className="py-20 sm:py-28 relative scroll-mt-20" aria-label="Studio Services">
+    <section
+      id="services"
+      className="py-20 sm:py-28 relative scroll-mt-20"
+      aria-label="Studio Services"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -22,179 +184,186 @@ export default function ServicesSection({ onOpenEnquiryWithService }) {
             </h2>
           </div>
 
-
+          <p className="text-slate-400 dark:text-slate-400 light:text-slate-600 font-ui text-xs sm:text-sm max-w-md">
+            Turnkey production or specialized creative roles. Tailored to the script, timeline, and
+            delivery requirements of every commission.
+          </p>
         </div>
 
-        {/* Structured 4-Column Grid (8 Disciplines) with Cinematic Focus Reveal Animation */}
+        {/* 8-Card Responsive Grid (Desktop: 4 columns x 2 rows, Tablet: 2 cols, Mobile: 1 col) */}
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-          onMouseLeave={() => setActiveId(null)}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          onMouseLeave={() => setHoveredCard(null)}
         >
-          {studioServices.map((service) => {
-            const isFocused = activeId === service.id;
-            const isOtherActive = activeId !== null && !isFocused;
+          {SERVICES_DATA.map((service) => {
+            // Once a card is revealed, it stays permanently revealed!
+            const isRevealed = revealedCards.has(service.id);
+            const isHovered = hoveredCard === service.id;
 
             return (
               <div
                 key={service.id}
-                onMouseEnter={() => setActiveId(service.id)}
-                onClick={() => setActiveId((prev) => (prev === service.id ? null : service.id))}
-                className="relative min-h-[430px] sm:min-h-[450px] p-6 rounded-xl flex flex-col justify-between bg-[var(--bg-card)] dark:bg-[var(--bg-card)] light:bg-[#ffffff] border transition-all cursor-pointer select-none group will-change-[transform,filter,opacity] overflow-hidden"
+                onMouseEnter={() => revealCard(service.id)}
+                onClick={() => handleCardClick(service)}
+                className="relative h-[300px] rounded-[18px] flex flex-col justify-between bg-[#0B0D13] border transition-all duration-500 cursor-pointer select-none group overflow-hidden will-change-[transform,box-shadow,border-color]"
                 style={{
-                  transform: isFocused
-                    ? 'scale(1.02) translateZ(0)'
-                    : isOtherActive
-                      ? 'scale(0.985) translateZ(0)'
-                      : 'scale(1) translateZ(0)',
-                  filter: isOtherActive ? 'blur(4.5px)' : 'none',
-                  opacity: isOtherActive ? 0.38 : 1,
-                  borderColor: isFocused ? 'rgba(192, 164, 125, 0.7)' : '#20222c',
-                  boxShadow: isFocused
-                    ? '0 24px 50px -12px rgba(0, 0, 0, 0.85), 0 0 35px rgba(192, 164, 125, 0.2)'
-                    : '0 4px 20px rgba(0, 0, 0, 0.25)',
-                  zIndex: isFocused ? 20 : 1,
+                  transform: isHovered
+                    ? 'scale(1.025) translateZ(0)'
+                    : 'scale(1) translateZ(0)',
+                  borderColor: isHovered
+                    ? 'rgba(217, 172, 114, 0.75)'
+                    : isRevealed
+                    ? 'rgba(217, 172, 114, 0.35)'
+                    : 'rgba(217, 172, 114, 0.16)',
+                  boxShadow: isHovered
+                    ? '0 18px 45px -8px rgba(0, 0, 0, 0.95), 0 0 28px rgba(217, 172, 114, 0.22)'
+                    : isRevealed
+                    ? '0 8px 24px rgba(0, 0, 0, 0.5)'
+                    : '0 6px 20px rgba(0, 0, 0, 0.4)',
+                  zIndex: isHovered ? 20 : isRevealed ? 10 : 1,
                   transition:
-                    'transform 350ms cubic-bezier(0.25, 1, 0.5, 1), filter 500ms cubic-bezier(0.25, 1, 0.5, 1), opacity 400ms cubic-bezier(0.25, 1, 0.5, 1), border-color 400ms cubic-bezier(0.25, 1, 0.5, 1), box-shadow 400ms cubic-bezier(0.25, 1, 0.5, 1)',
+                    'transform 380ms cubic-bezier(0.22, 1, 0.36, 1), border-color 380ms ease, box-shadow 380ms ease',
                 }}
               >
-                {/* Subtle dark ambient overlay in initial & blurred state */}
-                <div
-                  className="absolute inset-0 rounded-xl pointer-events-none transition-opacity duration-500"
-                  style={{
-                    background:
-                      'radial-gradient(ellipse at 50% 50%, rgba(192, 164, 125, 0.05) 0%, rgba(5, 8, 14, 0.6) 100%)',
-                    opacity: isFocused ? 0 : 0.85,
-                  }}
-                />
-
-                {/* 1. TOP AREA: Service Number (Always visible near top-left) */}
-                <div className="relative z-10 flex items-center justify-between mb-3">
+                {/* ── TOP-LEFT NUMBER BADGE (Always sharp & visible) ── */}
+                <div className="absolute top-3.5 left-3.5 z-30 pointer-events-none">
                   <span
-                    className="font-mono font-bold text-sm tracking-wider transition-colors duration-300"
-                    style={{
-                      color: isFocused ? '#D9AC72' : '#c0a47d',
-                      opacity: isFocused ? 1 : 0.8,
-                    }}
+                    className="font-mono text-[11px] font-semibold tracking-wider text-[#D9AC72] border border-[#D9AC72]/35 bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded-full shadow-sm transition-opacity duration-300"
+                    style={{ opacity: isRevealed ? 1 : 0.85 }}
                   >
                     {service.number}
                   </span>
                 </div>
 
-                {/* 2. TOP HEADLINE (in natural document flow, emerges smoothly on reveal) */}
-                <div className="relative z-10 mb-2">
-                  <h3
-                    className="font-display font-bold text-lg text-white dark:text-white light:text-[var(--bg-primary)] leading-snug"
+                {/* ── UPPER PORTION: CINEMATIC IMAGE ── */}
+                <div className="relative w-full h-[125px] overflow-hidden pointer-events-none">
+                  <img
+                    src={service.image}
+                    alt={service.imageAlt}
+                    className="w-full h-full object-cover transition-all duration-600 ease-out"
                     style={{
-                      opacity: isFocused ? 1 : 0,
-                      transform: isFocused ? 'translateY(0) scale(1)' : 'translateY(32px) scale(1.03)',
-                      pointerEvents: isFocused ? 'auto' : 'none',
-                      color: isFocused ? '#F5F2ED' : '#ffffff',
-                      transition: isFocused
-                        ? `transform 550ms ${EASING} 40ms, opacity 400ms ${EASING} 60ms, color 300ms ease`
-                        : `transform 450ms ${EASING}, opacity 250ms ${EASING}`,
+                      opacity: isRevealed ? 1 : 0.2,
+                      filter: isRevealed ? 'blur(0px) brightness(1.05)' : 'blur(7px) brightness(0.55)',
+                      transform: isRevealed ? 'scale(1)' : 'scale(1.08)',
                     }}
-                  >
-                    {service.title}
-                  </h3>
-                </div>
+                    loading="lazy"
+                  />
 
-                {/* 3. CENTERED HEADLINE (Exact vertical & horizontal center in initial blurred preview state) */}
-                <div
-                  className="absolute inset-x-6 top-1/2 -translate-y-1/2 z-20 pointer-events-none text-center"
-                  style={{
-                    opacity: isFocused ? 0 : 1,
-                    transform: isFocused
-                      ? 'translateY(-140%) scale(0.95)'
-                      : 'translateY(-50%) scale(1.04)',
-                    filter: isOtherActive ? 'blur(2px)' : 'none',
-                    transition: isFocused
-                      ? `transform 550ms ${EASING}, opacity 280ms ${EASING}`
-                      : `transform 550ms ${EASING}, opacity 350ms ${EASING} 100ms, filter 400ms ease`,
-                  }}
-                >
-                  <h3 className="font-display font-bold text-lg sm:text-xl text-[#F5F2ED] tracking-tight leading-snug">
-                    {service.title}
-                  </h3>
+                  {/* Gradient Overlay for Readability */}
                   <div
-                    className="w-8 h-[1.5px] mx-auto mt-3 rounded-full transition-opacity duration-300"
+                    className="absolute inset-0 pointer-events-none transition-opacity duration-400"
                     style={{
-                      background: 'linear-gradient(90deg, transparent, #c0a47d, transparent)',
-                      opacity: isFocused ? 0 : 0.65,
+                      background:
+                        'linear-gradient(180deg, rgba(11, 13, 19, 0.35) 0%, rgba(11, 13, 19, 0.15) 35%, rgba(11, 13, 19, 0.85) 85%, #0B0D13 100%)',
+                      opacity: isRevealed ? 1 : 0.85,
                     }}
                   />
                 </div>
 
-                {/* 4. SECONDARY CONTENT: Description, Deliverables & CTA Button */}
-                <div className="relative z-10 flex flex-col justify-between flex-1 mt-1">
-                  {/* Description / Tagline */}
-                  <p
-                    className="text-slate-400 dark:text-slate-400 light:text-slate-600 font-ui text-xs sm:text-sm leading-relaxed mb-6"
+                {/* ── BLURRED STATE: CENTERED HEADLINE (Smoothly hides on reveal and stays hidden) ── */}
+                <div
+                  className="absolute inset-x-4 top-1/2 -translate-y-1/2 z-20 pointer-events-none text-center"
+                  style={{
+                    opacity: isRevealed ? 0 : 1,
+                    transform: isRevealed
+                      ? 'translateY(-130%) scale(0.96)'
+                      : 'translateY(-50%) scale(1)',
+                    transition: isRevealed
+                      ? 'transform 450ms cubic-bezier(0.22, 1, 0.36, 1), opacity 240ms ease'
+                      : 'transform 450ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms ease 60ms',
+                  }}
+                >
+                  <h3 className="font-display font-bold text-[16px] sm:text-[17px] text-[#F5F2ED] tracking-tight leading-snug">
+                    {service.title}
+                  </h3>
+                  <div
+                    className="w-8 h-[1.5px] mx-auto mt-2 rounded-full"
                     style={{
-                      opacity: isFocused ? 1 : 0,
-                      transform: isFocused ? 'translateY(0)' : 'translateY(12px)',
-                      filter: isFocused ? 'blur(0px)' : 'blur(7px)',
-                      pointerEvents: isFocused ? 'auto' : 'none',
-                      transition: isFocused
-                        ? `transform 500ms ${EASING} 120ms, opacity 450ms ease 120ms, filter 500ms ease 120ms`
-                        : `transform 320ms ${EASING}, opacity 220ms ease, filter 320ms ease`,
+                      background: 'linear-gradient(90deg, transparent, #D9AC72, transparent)',
+                      opacity: isRevealed ? 0 : 0.65,
+                      transition: 'opacity 250ms ease',
                     }}
-                  >
-                    {service.tagline}
-                  </p>
+                  />
+                </div>
 
+                {/* ── LOWER PORTION: REVEALED CONTENT (Becomes clear permanently upon hover) ── */}
+                <div className="p-4 pt-1 flex flex-col justify-between flex-1 relative z-10">
                   <div>
-                    {/* Deliverables List (Staggered item-by-item animation) */}
+                    {/* Golden Outline Icon */}
                     <div
-                      className="space-y-1.5 mb-6 pt-4 border-t border-[#1e2029] dark:border-[#1e2029] light:border-[#e5e5e8] transition-opacity duration-300"
+                      className="mb-2"
                       style={{
-                        opacity: isFocused ? 1 : 0,
-                        transitionDelay: isFocused ? '180ms' : '0ms',
+                        opacity: isRevealed ? 1 : 0,
+                        transform: isRevealed ? 'translateY(0)' : 'translateY(12px)',
+                        filter: isRevealed ? 'blur(0px)' : 'blur(5px)',
+                        transition: isRevealed
+                          ? 'transform 400ms cubic-bezier(0.22, 1, 0.36, 1) 70ms, opacity 300ms ease 70ms, filter 350ms ease 70ms'
+                          : 'transform 200ms ease, opacity 160ms ease, filter 200ms ease',
                       }}
                     >
-                      {service.deliverables.map((item, idx) => {
-                        const itemDelay = 200 + idx * 60; // 200ms, 260ms, 320ms, 380ms
-                        return (
-                          <div
-                            key={idx}
-                            className="flex items-start gap-2 text-[11px] font-ui text-slate-300 dark:text-slate-300 light:text-slate-700"
-                            style={{
-                              opacity: isFocused ? 1 : 0,
-                              transform: isFocused ? 'translateY(0)' : 'translateY(10px)',
-                              filter: isFocused ? 'blur(0px)' : 'blur(6px)',
-                              pointerEvents: isFocused ? 'auto' : 'none',
-                              transition: isFocused
-                                ? `transform 450ms ${EASING} ${itemDelay}ms, opacity 400ms ease ${itemDelay}ms, filter 450ms ease ${itemDelay}ms`
-                                : `transform 260ms ${EASING}, opacity 180ms ease, filter 260ms ease`,
-                            }}
-                          >
-                            <Check className="w-3 h-3 text-[#c0a47d] shrink-0 mt-0.5" />
-                            <span>{item}</span>
-                          </div>
-                        );
-                      })}
+                      <ServiceIcon type={service.iconType} />
                     </div>
 
-                    {/* CTA Button (Appears last with fade-up and de-blurring) */}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onOpenEnquiryWithService(service.title);
-                      }}
-                      className="w-full py-2.5 px-3 rounded-lg font-ui text-xs uppercase tracking-wider font-medium flex items-center justify-between text-white bg-[#ad906c] hover:bg-[#927550] transition-colors duration-300 shadow-md cursor-pointer"
+                    {/* Prominent Service Heading */}
+                    <h3
+                      className="font-display font-bold text-[16px] sm:text-[17px] text-white leading-tight tracking-tight mb-1.5"
                       style={{
-                        opacity: isFocused ? 1 : 0,
-                        transform: isFocused ? 'translateY(0)' : 'translateY(12px)',
-                        filter: isFocused ? 'blur(0px)' : 'blur(7px)',
-                        pointerEvents: isFocused ? 'auto' : 'none',
-                        transition: isFocused
-                          ? `transform 480ms ${EASING} 420ms, opacity 420ms ease 420ms, filter 480ms ease 420ms, background-color 250ms ease`
-                          : `transform 240ms ${EASING}, opacity 160ms ease, filter 240ms ease`,
+                        opacity: isRevealed ? 1 : 0,
+                        transform: isRevealed ? 'translateY(0)' : 'translateY(14px)',
+                        transition: isRevealed
+                          ? 'transform 420ms cubic-bezier(0.22, 1, 0.36, 1) 40ms, opacity 350ms ease 40ms'
+                          : 'transform 200ms ease, opacity 160ms ease',
                       }}
                     >
-                      <span>Inquire for this</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </button>
+                      {service.title}
+                    </h3>
+
+                    {/* Short Description */}
+                    <p
+                      className="font-ui text-[11.5px] sm:text-xs text-slate-400 line-clamp-2 leading-relaxed max-w-[250px]"
+                      style={{
+                        opacity: isRevealed ? 1 : 0,
+                        transform: isRevealed ? 'translateY(0)' : 'translateY(10px)',
+                        filter: isRevealed ? 'blur(0px)' : 'blur(5px)',
+                        transition: isRevealed
+                          ? 'transform 400ms cubic-bezier(0.22, 1, 0.36, 1) 110ms, opacity 300ms ease 110ms, filter 350ms ease 110ms'
+                          : 'transform 200ms ease, opacity 160ms ease, filter 200ms ease',
+                      }}
+                    >
+                      {service.description}
+                    </p>
                   </div>
+
+                  {/* Bottom Row: Minimal Golden Arrow */}
+                  <div
+                    className="pt-2 flex items-center justify-between"
+                    style={{
+                      opacity: isRevealed ? 1 : 0,
+                      transform: isRevealed ? 'translateX(0)' : 'translateX(-6px)',
+                      transition: isRevealed
+                        ? 'transform 400ms cubic-bezier(0.22, 1, 0.36, 1) 160ms, opacity 300ms ease 160ms'
+                        : 'transform 180ms ease, opacity 140ms ease',
+                    }}
+                  >
+                    <div className="flex items-center gap-1.5 group-hover:translate-x-1 transition-transform duration-300">
+                      <ArrowRight className="w-3.5 h-3.5 text-[#D9AC72]" strokeWidth={2} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── BOTTOM-RIGHT DIAGONAL GOLD STREAK (Subtle luxury accent) ── */}
+                <div className="absolute bottom-0 right-0 w-16 h-16 pointer-events-none overflow-hidden rounded-br-[18px]">
+                  <div
+                    className="absolute -bottom-1 -right-1 w-20 h-[1.5px] origin-bottom-right rotate-[-45deg] transition-all duration-400"
+                    style={{
+                      background:
+                        'linear-gradient(90deg, transparent 0%, rgba(217, 172, 114, 0.4) 30%, rgba(217, 172, 114, 0.95) 70%, rgba(255, 235, 195, 1) 100%)',
+                      boxShadow: isRevealed
+                        ? '0 0 10px rgba(217, 172, 114, 0.7), 0 0 16px rgba(217, 172, 114, 0.3)'
+                        : '0 0 3px rgba(217, 172, 114, 0.2)',
+                      opacity: isRevealed ? 1 : 0.3,
+                    }}
+                  />
                 </div>
               </div>
             );
